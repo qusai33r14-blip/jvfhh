@@ -8,20 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <script>
-      // تهيئة كائن process لمنع أخطاء التشغيل في المتصفح
-      // هذا ضروري لأن الكود يستخدم process.env.API_KEY
-      window.process = { 
-        env: { 
-          API_KEY: "" 
-        } 
-      };
+      // تهيئة البيئة لمنع الأخطاء في بعض المتصفحات والمنصات
+      window.process = window.process || { env: { API_KEY: "" } };
     </script>
     <style>
       :root {
         --primary: #6366f1;
-        --primary-hover: #4f46e5;
         --bg-dark: #09090b;
-        --surface: #18181b;
       }
       body {
         font-family: 'Cairo', sans-serif;
@@ -29,12 +22,10 @@
         color: #f4f4f5;
         margin: 0;
         padding: 0;
+        min-height: 100vh;
         overflow-x: hidden;
-        min-height: 100vh;
       }
-      #root {
-        min-height: 100vh;
-      }
+      #root { min-height: 100vh; }
       .glass {
         background: rgba(24, 24, 27, 0.7);
         backdrop-filter: blur(12px);
@@ -51,11 +42,6 @@
         from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
       }
-
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(1);
-        cursor: pointer;
-      }
       
       select {
         appearance: none;
@@ -68,9 +54,9 @@
     <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
     "lucide-react": "https://esm.sh/lucide-react@0.460.0?bundle",
     "@google/genai": "https://esm.sh/@google/genai@0.21.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
@@ -81,7 +67,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- التأكد من استيراد الملف الرئيسي بشكل صحيح كـ Module -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
