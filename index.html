@@ -8,8 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <script>
-      // تعريف كائن process لمنع خطأ "process is not defined" في المتصفح
-      window.process = { env: { API_KEY: "" } };
+      // تهيئة كائن process لمنع أخطاء التشغيل في المتصفح
+      // هذا ضروري لأن الكود يستخدم process.env.API_KEY
+      window.process = { 
+        env: { 
+          API_KEY: "" 
+        } 
+      };
     </script>
     <style>
       :root {
@@ -22,7 +27,13 @@
         font-family: 'Cairo', sans-serif;
         background-color: var(--bg-dark);
         color: #f4f4f5;
+        margin: 0;
+        padding: 0;
         overflow-x: hidden;
+        min-height: 100vh;
+      }
+      #root {
+        min-height: 100vh;
       }
       .glass {
         background: rgba(24, 24, 27, 0.7);
@@ -70,6 +81,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- التأكد من استيراد الملف الرئيسي بشكل صحيح كـ Module -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
