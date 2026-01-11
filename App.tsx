@@ -13,8 +13,8 @@ import {
 import { 
   Student, AttendanceRecord, SlotType, SLOT_LABELS, SESSION_SLOTS, PRAYER_SLOTS,
   GROUPS, AttendanceStatus, STATUS_LABELS 
-} from './types';
-import { getAttendanceInsights } from './services/geminiService';
+} from './types.ts';
+import { getAttendanceInsights } from './services/geminiService.ts';
 
 const MONTHS = [
   { id: 1, name: 'يناير' },
